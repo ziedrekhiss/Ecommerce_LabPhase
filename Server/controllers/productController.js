@@ -15,6 +15,15 @@ const newProduct = async (req, res)=>{
     }
 }
 
+const getAll = async(req, res)=>{
+    try{
+        const product = await Product.find();
+        res.status(201).json(product)
+    }catch (error){
+       res.status(500).json(error)
+    }
+}
+
 
 const getProduct = async (req, res)=>{
     try {
@@ -56,4 +65,4 @@ const deleteProduct = async (req, res)=>{
 
 
 
-module.exports={newProduct, updateProduct, deleteProduct, getProduct}
+module.exports={newProduct, updateProduct, deleteProduct, getProduct, getAll}

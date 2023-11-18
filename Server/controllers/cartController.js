@@ -1,6 +1,6 @@
 const Cart = require("../models/cart.js")
 const Product = require("../models/product")
-
+const User = require ("../models/user.js") 
 
 const getCartItems= async (req, res)=>{
     const userId = req.user.id;
@@ -23,9 +23,10 @@ const addToCart= async (req, res)=>{
     try {
         const userId= req.user.id;
         const productId = await req.params.id;
-        const product = await Product.findById(productId)
-        
+        const product =  Product.findById(productId)
+        console.log('userrrrrr id',userId)
         console.log(product)
+        console.log(req, 'request');
 
         if (!product){
             res.status(401).json({error: "product not found"})

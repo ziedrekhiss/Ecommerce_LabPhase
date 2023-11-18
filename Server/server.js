@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express()
+const cors = require ("cors")
 require ('dotenv').config();
 const connectDB = require("./config/database")
 
 const userRoute = require ("./routes/user.js")
 const productRoute = require ("./routes/product.js")
 const cartRoute = require("./routes/cart.js")
+app.use(cors());
 app.use(express.json());
 const port = 4000
 

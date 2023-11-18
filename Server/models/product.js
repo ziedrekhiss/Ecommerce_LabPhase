@@ -35,11 +35,13 @@ const productSchema =  new Schema(
         },
         rating:{
             type : Number,
-            required : true
+            required : true,
+            default:0
         },
         numReviews:{
             type : Number,
-            required : true
+            required : true,
+            default :0
         },
     },
     {
