@@ -31,7 +31,7 @@ const getProduct = async (req, res)=>{
         const product = await Product.findById(productId)
         res.status(201).json(product)
     } catch (error) {
-        console.log("error", error)
+        res.status(500).json(error)
     }
 }
 

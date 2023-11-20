@@ -29,7 +29,11 @@ export default function Navbar() {
     useEffect(()=>{
         checkAuth.token && checkAuth.islogged? setIsAuth(true):null
     },[checkAuth.token, checkAuth.islogged])
-  
+    
+    const handleShowCart = ()=>{
+        navigate("/myCart")
+    } 
+
     return (
     <header>
         <div className="logo">
@@ -43,7 +47,7 @@ export default function Navbar() {
                         <button><BiSearchAlt size={25}/></button>
                 </li>
                 <li>
-                    <button className="navlink"><BiCartAlt size={30}/></button>
+                    <button className="navlink" onClick={handleShowCart}><BiCartAlt size={30}/></button>
                 </li>
                 <li>
                     { isAuth? <button className="navlink" onClick={handleLogin}><BiLogInCircle size={30}/></button>

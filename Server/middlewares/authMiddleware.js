@@ -3,6 +3,10 @@ const User = require ("../models/user")
 
 const protect = async (req, res, next)=>{
     const token = req.headers.authorization?.split(" ")[1];
+    console.log("Received token:", token);
+    if (!token) {
+        return res.status(401).json({ error: "Token not provided" });
+    }
     if(
         req.headers.authorization &&
         req.headers.authorization.startsWith("Bearer")

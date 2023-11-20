@@ -2,7 +2,7 @@ import { useSelector} from 'react-redux'
 import ProductCard from './ProductCard'
 
 
-export default function ProductList() {
+export default function ProductList({setIsShown}) {
   const products = useSelector((state)=>state.product)
   const error = useSelector((state) => state.returnError)
   const loading = useSelector((state)=>state.product.loading)
@@ -23,6 +23,7 @@ export default function ProductList() {
             title={product.title}
             description={product.description}
             price={product.price}
+            setIsShown={setIsShown}
           />
         )) 
       )

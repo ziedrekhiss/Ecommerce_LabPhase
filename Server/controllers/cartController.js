@@ -10,7 +10,7 @@ const getCartItems= async (req, res)=>{
         if (cart && cart.items.length>=1) {
             res.status(201).json(cart)
         }else{
-            res.status(201).json(null)
+            res.status(201).json(cart)
         }
         
     } catch (error) {
@@ -22,11 +22,8 @@ const getCartItems= async (req, res)=>{
 const addToCart= async (req, res)=>{
     try {
         const userId= req.user.id;
-        const productId = await req.params.id;
-        const product =  Product.findById(productId)
-        console.log('userrrrrr id',userId)
-        console.log(product)
-        console.log(req, 'request');
+        const productId = req.params.id;
+        const product = await Product.findById(productId)
 
         if (!product){
             res.status(401).json({error: "product not found"})
@@ -39,8 +36,7 @@ const addToCart= async (req, res)=>{
             })
          }
         let existingItem = cart.items.find(item => item.productId.equals(productId));
-        console.log({"message":existingItem});
-        if (existingItem) {
+            if (existingItem) {
             existingItem.quantity += 1;
         } else {
             cart.items.push({
@@ -53,19 +49,20 @@ const addToCart= async (req, res)=>{
         
         cart.bill += product.price;
 
-        await cart.save();
-        res.status(201).json(cart)
+        const response = await cart.save();
+        res.status(201).json(response)
     } catch (error) {
         console.log("error", error)
         res.status(500).json({error: "cannot add the product"})
     }
 }
 
-const deleteCartItem= async (req, res)=>{
+const deleteCartItem = async (req, res)=>{
     try {
         const userId = req.user.id;
         const productId = req.params.id
-        console.log(userId)
+        console.log('product',productId);
+        console.log('user',userId)
         let cart = await Cart.findOne({userId})
         let item = cart.items.findIndex(item => item.productId.equals(productId))
         
@@ -85,6 +82,7 @@ const deleteCartItem= async (req, res)=>{
 const deleteAllCartItems= async (req, res)=>{
     try {
         const userId = req.user.id;
+        console.log('...............',userId)
         let cart = await Cart.findOne({userId});
 
         if(cart){

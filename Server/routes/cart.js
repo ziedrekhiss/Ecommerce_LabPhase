@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/addItem/:id", protect,  addToCart);
 router.get("/getItem", protect, getCartItems);
-router.delete("/:id", protect, deleteCartItem);
+router.delete("/:id", protect,  deleteCartItem);
 router.delete("/delcart/delAll", protect, deleteAllCartItems)
 
 

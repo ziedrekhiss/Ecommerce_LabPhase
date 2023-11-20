@@ -9,17 +9,20 @@
 
 .product-section {
     width: 1050px;
-    height: 400px;
+    height: 420px;
     padding: auto;
     margin: auto;
+    margin-top: 25px;
     border: solid 1px rgb(121, 118, 118);
     border-radius: 5px;
+    position: relative;
 }
 
 .product-container{
     display: flex;
-    padding: 10px;
+    padding: 5px;
     margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 .product-container img{
@@ -43,7 +46,7 @@
 }
 
 
-.details button {
+.cart-btn {
     background-color: transparent;
     border: solid 1px black;
     border-radius: 5px;
@@ -52,7 +55,23 @@
     cursor: pointer;
 }
 
-.details button:hover{
+.cart-btn:hover{
     background-color: rgb(71, 71, 211);
     font-size: 18px;
 }
+
+.close-btn {
+    padding-top: 10px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left:    15px;
+    bottom:   15px;
+    border: 0;
+ }
+
+ .close-btn:hover{
+    font-size: 18px;
+    font-weight: bold;
+ }

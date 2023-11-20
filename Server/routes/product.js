@@ -7,8 +7,8 @@ const {newProduct, updateProduct, deleteProduct, getProduct, getAll}= require ("
 const router = express.Router();
 
 router.post("/newProduct",auth, newProduct);
-router.get("/:id",getProduct);
 router.get("/", getAll);
+router.get("/getProduct/:id",getProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
 

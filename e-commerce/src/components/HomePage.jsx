@@ -1,9 +1,7 @@
 import { useDispatch} from 'react-redux'
+import { useState } from 'react';
 import {useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar'
 import ProductDetails from '../components/product/ProductDetails'
-import ShoppingCart from './cart/ShoppingCart';
 import {fetchProducts} from '../redux/actions/productActions'
 import '../style/homePage.css'
 import '../style/login.css'
@@ -11,25 +9,26 @@ import ProductList from './product/ProductList'
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [isShown, setIsShown] = useState (false);
 
   useEffect(() => {
-    const fetchData =  () => {
-        dispatch(fetchProducts());
-     };
-    // fetchData();
-    const unlisten = () => {
-      fetchData();
+    const fetchData = async () => {
+       dispatch(fetchProducts());
     };
-    return unlisten;
-  }, [dispatch, navigate]);
+    if (isShown === false)
+   { fetchData();}
+    console.log('Effect triggered');
+  }, [dispatch, isShown]);
   
   return (
-    <div>
-        <Navbar/>
-        <ProductList/>
-        <ProductDetails/>
-        <ShoppingCart/>
+    <div> 
+      {isShown ? (
+        <ProductDetails setIsShown={setIsShown} />
+      ) : (
+        <>
+          <ProductList setIsShown={setIsShown}/>
+        </>
+      )}
     </div>
   )
 }
