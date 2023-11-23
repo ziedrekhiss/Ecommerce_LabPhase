@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../../style/allProducts.css";
 import { FiDelete, FiArrowLeft } from "react-icons/fi";
 import { RxUpdate } from "react-icons/rx";
-import { removeProduct } from "../../redux/actions/productActions";
+import { MdOutlineLibraryAdd } from "react-icons/md";
+import {
+  removeProduct,
+  fetchProducts,
+} from "../../redux/actions/productActions";
+import { useEffect } from "react";
 export default function Allproducts() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,16 +26,35 @@ export default function Allproducts() {
     "update",
     "delete",
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchProducts());
+    };
+    if (!products.length) {
+      fetchData();
+    }
+  }, [dispatch, products.length]);
+
   const handleDelete = (productId) => {
     dispatch(removeProduct(productId));
   };
   const handleUpdate = (productId) => {
     navigate(`/updateproduct/${productId}`);
   };
+
+  const handleAddProduct = () => {
+    navigate("/addProduct");
+  };
   return (
     <div className="all-product">
       <div className="product-Table">
-        <h2>MANAGE PRODUCTS</h2>
+        <div className="flex-box">
+          <h2>MANAGE PRODUCTS</h2>
+          <button onClick={handleAddProduct}>
+            <MdOutlineLibraryAdd /> Add Product
+          </button>
+        </div>
         <table className="product-table">
           <thead>
             <tr>
@@ -62,7 +86,7 @@ export default function Allproducts() {
               ))
             ) : (
               <tr>
-                <td colSpan="5">No Products Available</td>
+                <td colSpan="7">No Products Available</td>
               </tr>
             )}
           </tbody>

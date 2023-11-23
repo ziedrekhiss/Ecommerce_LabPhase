@@ -50,8 +50,15 @@ export default function Navbar() {
   return (
     <header>
       <div className="logo">
-        <BiCart size={40} />
-        <h3>GO CART</h3>
+        <button
+          onClick={() => {
+            navigate("/home");
+          }}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <BiCart size={40} />
+          <h3>GO CART</h3>
+        </button>
       </div>
       <nav ref={navRef}>
         <ul>

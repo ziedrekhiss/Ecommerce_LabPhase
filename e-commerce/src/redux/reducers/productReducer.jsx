@@ -8,6 +8,9 @@ const initialState = {
   products: [],
   loading: false,
   error: null,
+  currentPage: 1,
+  itemPerPage: 3,
+  totalItems: 0,
 };
 
 const productReducer = (state = initialState, action) => {

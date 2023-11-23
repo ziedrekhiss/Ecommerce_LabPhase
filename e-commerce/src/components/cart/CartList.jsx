@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchItems } from "../../redux/actions/cartActions";
@@ -25,9 +24,9 @@ export default function CartList() {
   const displayedItems = Array.isArray(cart.items)
     ? cart.items.slice(startIndex, endIndex)
     : [];
+
   return (
     <div>
-      {console.log("cart", cart)}
       <div
         className="container"
         style={{ width: "600px", height: "400px", paddingTop: "0px" }}
@@ -37,7 +36,15 @@ export default function CartList() {
         ) : cart.initialState ? (
           <div>Your Cart is Empty</div>
         ) : (
-          <React.Fragment>
+          <div
+            className="cart-list"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             {displayedItems &&
               displayedItems.map((item) => (
                 <CartItem
@@ -54,7 +61,7 @@ export default function CartList() {
               totalItems={page.totalItems}
               onPageChange={handlePageChange}
             />
-          </React.Fragment>
+          </div>
         )}
       </div>
     </div>

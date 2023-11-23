@@ -42,11 +42,20 @@ export default function AddProduct() {
       quantity: 0,
     });
   };
+  const handleReturn = () => {
+    navigate("/manageProducts");
+  };
 
   return (
     <div className="add-product-container">
       <div className="add-product">
-        <h2>ADD PRODUCT</h2>
+        <div className="flex">
+          <h2>ADD PRODUCT</h2>
+          <button onClick={handleReturn}>
+            <FiArrowLeft />
+            back to dashboard
+          </button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="product-label">
             <label> Product title</label>
