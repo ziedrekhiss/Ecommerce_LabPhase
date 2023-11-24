@@ -1,0 +1,30 @@
+.sideBar-container {
+  width: 400px;
+  /* border: 1px solid black;
+  border-radius: 25px; */
+  box-shadow: 3px 3px 3px #ccc;
+}
+
+.sidebar {
+  padding: 30px;
+}
+
+.sidebar h3 {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.sidebar ul {
+  padding-top: 50px;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.sidebar li:hover {
+  font-size: 18px;
+  cursor: pointer;
+}

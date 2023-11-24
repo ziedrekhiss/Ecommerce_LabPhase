@@ -19,7 +19,8 @@ const signUp = async (req, res)=>{
 
         const hashPswd = await bcrypt.hash(password, 10);
         newUser.password=hashPswd;
-        newUser.save();
+        newUser.save()
+        .then (generateToken(newUser._id))
         return res.status(201).json(newUser);
 
     } catch (error) {
@@ -32,24 +33,27 @@ const signIn = async (req, res)=>{
     try {
         const {email, password} = req.body;
         if(!email || !password){
-            res.status(400).json("All the fields are mendatory");
+           return res.status(400).json("All the fields are mendatory");
         }
 
         const user = await User.findOne({email});
         const isMatch = user && (await bcrypt.compare(password , user.password))
 
         if (user && isMatch){
-            res.status(200).json({
+            return res.status(200).json({
                 _id:user.id,
                 name: user.name,
                 email : user.email,
-                token: generateToken(user._id),
+                token: generateToken(user._id, user.role),
+                role: user.role
             });
         } else {
-            res.status(400).json("invalid Email or password")
+            return res.status(401).json("invalid Email or password") 
         }
+        
     } catch (error) {
-        console.log("error", error);   
+        console.log("error", error);
+           
     }
 }
 

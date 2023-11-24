@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.add-product-container {
+  width: 1050px;
+  height: 650px;
+  padding: auto;
+  margin: auto;
+  margin-top: 35px;
+  position: relative;
+  box-shadow: 3px 3px 3px #ccc;
+}
+
+.add-product {
+  border-radius: 10px;
+  height: 580px;
+  border: solid rgb(233, 226, 226) 1px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  padding-bottom: 20px;
+}
+
+.add-product form {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding-top: 0;
+}
+
+label {
+  font-size: 18px;
+  padding: 6px 0 6px 0;
+}
+
+.product-label input {
+  width: 100%;
+  height: 30%;
+  background: transparent;
+  outline: none;
+  border: 0.3px solid black;
+  border-radius: 40px;
+  font-size: 20px;
+  color: var(--textColor);
+  padding: 15px 50px 15px 20px;
+}
+
+.product-label select {
+  width: 100%;
+  height: 60%;
+  background: transparent;
+  outline: none;
+  border: 0.3px solid black;
+  border-radius: 40px;
+  font-size: 15px;
+  color: var(--textColor);
+  padding: 5px 50px 5px 20px;
+}
+
+.add-product textarea {
+  width: 200%;
+  height: 50%;
+  background: transparent;
+  border: 0.3px solid black;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--textColor);
+  padding: 15px 50px 15px 20px;
+}
+
+.add-product button {
+  width: 25%;
+  height: 30px;
+  background: #fff;
+  border: solid 1px black;
+  border-radius: 30px;
+  cursor: pointer;
+  padding-top: 0;
+}
+
+.add-product button:hover {
+  background: rgb(71, 71, 211);
+}
+
+.close-btn button {
+  display: flex;
+  align-items: top;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.flex button {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  border: none;
+  text-align: right;
+  width: 190px;
+  background: none;
+}
+
+.flex button:hover {
+  font-size: 18px;
+  font-weight: bold;
+  background: none;
+}

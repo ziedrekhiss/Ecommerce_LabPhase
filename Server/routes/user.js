@@ -6,7 +6,7 @@ const protect = require("../middlewares/authMiddleware.js")
 const router = express.Router();
 
 router.post("/signUp",signUp);
-router.get("/signIn", signIn);
+router.post("/signIn", signIn);
 router.get("/:id", protect, getUser);
 
 
