@@ -1,13 +1,13 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Register from "./components/auth/Register";
-import Login from "./components/auth/login";
-import HomePage from "./components/HomePage";
-import RegisterSucess from "./components/auth/RegisterSucess";
+import Login from "./components/auth/login.jsx";
+import HomePage from "./components/HomePage.jsx";
+import RegisterSucess from "./components/auth/RegisterSucess.jsx";
 import Navbar from "./components/Navbar";
-import ShoppingCart from "./components/cart/ShoppingCart";
-import UpdateProduct from "./components/admin UI/UpdateProduct";
-import AddProduct from "./components/admin UI/AddProduct";
-import Allproducts from "./components/admin UI/AllProducts";
+import ShoppingCart from "./components/cart/ShoppingCart.jsx";
+import UpdateProduct from "./components/admin UI/UpdateProduct.jsx";
+import AddProduct from "./components/admin UI/AddProduct.jsx";
+import Allproducts from "./components/admin UI/AllProducts.jsx";
 function App() {
   const location = useLocation();
   const renderNavbar = !["/login", "/register", "/regSuccess"].includes(
