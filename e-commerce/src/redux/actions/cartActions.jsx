@@ -41,7 +41,7 @@ export const addItemToCart = (id) => async (dispatch) => {
       },
     };
     const response = await axios.post(
-      `http://localhost:4000/api/cart/addItem/${id}`,
+      `https://ecommerce-lab-phase.vercel.app/api/cart/addItem/${id}`,
       {},
       config
     );
@@ -62,7 +62,7 @@ export const fetchItems = (page, itemPerPage) => async (dispatch) => {
       },
     };
     const response = await axios.get(
-      `http://localhost:4000/api/cart/getItem?page=${page}&itemPerPage=${itemPerPage}`,
+      `https://ecommerce-lab-phase.vercel.app/api/cart/getItem?page=${page}&itemPerPage=${itemPerPage}`,
       config
     );
     const items =
@@ -96,7 +96,10 @@ export const deleteItem =
           Authorization: `Bearer ${token}`,
         },
       };
-      await axios.delete(`http://localhost:4000/api/cart/${productId}`, config);
+      await axios.delete(
+        `https://ecommerce-lab-phase.vercel.app/api/cart/${productId}`,
+        config
+      );
       await dispatch(fetchItems(page, itemPerPage));
     } catch (error) {
       console.log(error);
@@ -114,7 +117,10 @@ export const clearCart = () => async (dispatch) => {
       },
     };
 
-    await axios.delete("http://localhost:4000/api/cart/delcart/delAll", config);
+    await axios.delete(
+      "https://ecommerce-lab-phase.vercel.app/api/cart/delcart/delAll",
+      config
+    );
 
     dispatch(deleteAll());
   } catch (error) {
@@ -133,7 +139,7 @@ export const incQty = (productId) => async () => {
       },
     };
     await axios.put(
-      `http://localhost:4000/api/cart/incQty/${productId}`,
+      `https://ecommerce-lab-phase.vercel.app/api/cart/incQty/${productId}`,
       {},
       config
     );
@@ -153,7 +159,7 @@ export const decQty = (productId) => async () => {
     };
     console.log(token);
     const response = await axios.put(
-      `http://localhost:4000/api/cart/decQty/${productId}`,
+      `https://ecommerce-lab-phase.vercel.app/api/cart/decQty/${productId}`,
       {},
       config
     );

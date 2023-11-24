@@ -43,7 +43,9 @@ export const fetchProducts = () => {
     dispatch(getProducts());
 
     try {
-      const response = await axios.get("http://localhost:4000/api/product/");
+      const response = await axios.get(
+        "https://ecommerce-lab-phase.vercel.app/api/product/"
+      );
       dispatch(getProductsSuccess(response.data));
     } catch (error) {
       dispatch(setError(error.response.data, error.response.status));
@@ -56,7 +58,7 @@ export const fetchProduct = (id) => {
     dispatch(getProducts(id));
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/product/getProduct/${id}`
+        `https://ecommerce-lab-phase.vercel.app/api/product/getProduct/${id}`
       );
       console.log("getProduct:", response.data);
       dispatch(getProductsSuccess(response.data));
@@ -78,7 +80,7 @@ export const newProduct = (product) => {
       };
 
       const response = await axios.post(
-        "http://localhost:4000/api/product/newProduct",
+        "https://ecommerce-lab-phase.vercel.app/api/product/newProduct",
         product,
         config
       );
@@ -99,7 +101,7 @@ export const removeProduct = (productId) => async (dispatch) => {
       },
     };
     await axios.delete(
-      `http://localhost:4000/api/product/${productId}`,
+      `https://ecommerce-lab-phase.vercel.app/api/product/${productId}`,
       config
     );
     await dispatch(fetchProducts());
@@ -119,7 +121,7 @@ export const productUpdate = (productId, product) => async (dispatch) => {
     };
 
     await axios.put(
-      `http://localhost:4000/api/product/${productId}`,
+      `https://ecommerce-lab-phase.vercel.app/api/product/${productId}`,
       product,
       config
     );

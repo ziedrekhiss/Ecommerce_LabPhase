@@ -36,7 +36,7 @@ export const register = (userData) => async (dispatch) => {
   try {
     const body = userData;
     const response = await axios.post(
-      "http://localhost:4000/api/user/signUp",
+      "https://ecommerce-lab-phase.vercel.app/api/user/signUp",
       body
     );
     const token = response.data;
@@ -57,7 +57,7 @@ export const register = (userData) => async (dispatch) => {
 export const signIn = (identifiers) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "http://localhost:4000/api/user/signIn",
+      "https://ecommerce-lab-phase.vercel.app/api/user/signIn",
       identifiers
     );
     const { token, role } = response.data;
