@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Register from "./components/auth/Register";
-import Login from "./components/auth/login.jsx";
+import Login from "./components/auth/Login.jsx";
 import HomePage from "./components/HomePage.jsx";
 import RegisterSucess from "./components/auth/RegisterSucess.jsx";
 import Navbar from "./components/Navbar";
