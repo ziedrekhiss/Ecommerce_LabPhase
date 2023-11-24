@@ -3,11 +3,10 @@
   height: 600px;
   padding: auto;
   margin: auto;
-  border: solid 1px rgb(121, 118, 118);
-  border-radius: 10px;
-  margin-top: 25px;
+  margin-top: 50px;
   display: flex;
   position: relative;
+  box-shadow: 3px 3px 3px #ccc;
 }
 
 .product-Table {

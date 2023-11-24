@@ -16,10 +16,9 @@ export default function Login() {
   };
 
   useEffect(() => {
-    // Redirect when auth.isLogged changes
     console.log("redirected");
     if (auth.isLogged) {
-      navigate("/home"); // Redirect to the homepage
+      navigate("/");
     } else if (auth.error !== "") {
       setError(auth.error);
     }

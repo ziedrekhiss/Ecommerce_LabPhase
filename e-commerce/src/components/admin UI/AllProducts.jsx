@@ -8,15 +8,25 @@ import {
   removeProduct,
   fetchProducts,
 } from "../../redux/actions/productActions";
-import { useEffect } from "react";
+import Pagination from "../Pagination";
+import { useEffect, useState } from "react";
 export default function Allproducts() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   const products = useSelector((state) => state.product.products);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 6;
+  const endIndex = currentPage * itemsPerPage;
+  const startIndex = endIndex - itemsPerPage;
+  const currentItems =
+    products && products.length ? products.slice(startIndex, endIndex) : [];
+
   const tableHeader = [
     "Title",
     "Category",
@@ -29,12 +39,12 @@ export default function Allproducts() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchProducts());
+      await dispatch(fetchProducts(currentPage, itemsPerPage));
     };
     if (!products.length) {
       fetchData();
     }
-  }, [dispatch, products.length]);
+  }, [dispatch, products.length, currentPage, itemsPerPage]);
 
   const handleDelete = (productId) => {
     dispatch(removeProduct(productId));
@@ -45,6 +55,11 @@ export default function Allproducts() {
 
   const handleAddProduct = () => {
     navigate("/addProduct");
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    dispatch(fetchProducts(newPage, itemsPerPage));
   };
   return (
     <div className="all-product">
@@ -64,8 +79,8 @@ export default function Allproducts() {
             </tr>
           </thead>
           <tbody>
-            {products.length ? (
-              products.map((product) => (
+            {currentItems.length ? (
+              currentItems.map((product) => (
                 <tr key={product._id}>
                   <td>{product.title}</td>
                   <td>{product.category}</td>
@@ -91,6 +106,12 @@ export default function Allproducts() {
             )}
           </tbody>
         </table>
+        <Pagination
+          currentPage={currentPage}
+          itemPerPage={itemsPerPage}
+          totalItems={products.length}
+          onPageChange={handlePageChange}
+        />
       </div>
       <button className="close-btn" onClick={handleNavigate}>
         <FiArrowLeft />

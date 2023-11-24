@@ -3,6 +3,8 @@
   margin: 50px auto auto auto;
   display: flex;
   justify-content: space-between;
+  box-shadow: 3px 3px 3px #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .product-map {

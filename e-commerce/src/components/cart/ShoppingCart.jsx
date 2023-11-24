@@ -11,7 +11,7 @@ export default function ShoppingCart() {
   const cart = useSelector((state) => state.cart);
   const shippingCost = 7;
   const handleNavigate = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   const handleClear = () => {

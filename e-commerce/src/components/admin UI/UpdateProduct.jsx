@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../style/addProduct.css";
 import { FiArrowLeft } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { productUpdate } from "../../redux/actions/productActions";
+import {
+  productUpdate,
+  fetchProduct,
+} from "../../redux/actions/productActions";
 export default function UpdateProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,7 +15,8 @@ export default function UpdateProduct() {
   };
   const { id } = useParams();
   const productState = useSelector((state) => state.product.products);
-  const [product, setProduct] = useState({ ...productState[0] });
+  const [product, setProduct] = useState({});
+
   const categoryDropDown = [
     "Laptop",
     "Desktop Computer",
@@ -21,6 +25,17 @@ export default function UpdateProduct() {
     "Storage",
     "Accessories",
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchProduct(id));
+    };
+    if (!productState._id || productState._id !== id) {
+      fetchData();
+    } else {
+      setProduct({ ...productState });
+    }
+  }, [dispatch, id, productState]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,11 +49,20 @@ export default function UpdateProduct() {
       ...productState[0],
     });
   };
+  const handleReturn = () => {
+    navigate("/manageProducts");
+  };
 
   return (
     <div className="add-product-container">
       <div className="add-product">
-        <h2>UPDATE PRODUCT</h2>
+        <div className="flex">
+          <h2>UPDATE PRODUCT</h2>
+          <button onClick={handleReturn}>
+            <FiArrowLeft />
+            back to dashboard
+          </button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="product-label">
             <label> Product title</label>
@@ -72,7 +96,7 @@ export default function UpdateProduct() {
                 Select a Category
               </option>
               {categoryDropDown.map((category) => (
-                <option key={category} value={category}>
+                <option key={category} value={product.category}>
                   {category}
                 </option>
               ))}

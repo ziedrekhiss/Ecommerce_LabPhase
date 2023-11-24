@@ -52,7 +52,7 @@ export default function Navbar() {
       <div className="logo">
         <button
           onClick={() => {
-            navigate("/home");
+            navigate("/");
           }}
           style={{ display: "flex", alignItems: "center" }}
         >
@@ -65,11 +65,10 @@ export default function Navbar() {
           <li className="searchbar">
             <input type="text" placeholder="Search" />
             <button>
-              <BiSearchAlt size={25} />
+              <BiSearchAlt size={20} />
             </button>
           </li>
           <li>
-            {console.log(checkAuth)}
             {userRole === "admin" ? (
               <>
                 <button className="navlink" onClick={handleShowCart}>

@@ -31,8 +31,6 @@ export default function ProductList({ setIsShown }) {
   const startIndex = endIndex - itemsPerPage;
   const currentItems = filteredItems.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
-
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };

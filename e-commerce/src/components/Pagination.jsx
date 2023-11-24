@@ -18,10 +18,10 @@ export default function Pagination({
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <MdNavigateBefore size={30} />
+        <MdNavigateBefore size={35} />
       </button>
       <span
-        style={{ fontSize: "18px", fontWeight: "bold", padding: "0 5px 0 5px" }}
+        style={{ fontSize: "18px", fontWeight: "bold", paddingTop: "10px" }}
       >
         {currentPage}
       </span>
@@ -29,7 +29,7 @@ export default function Pagination({
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <MdNavigateNext size={30} />
+        <MdNavigateNext size={35} />
       </button>
     </div>
   );

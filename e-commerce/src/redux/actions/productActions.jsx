@@ -44,7 +44,6 @@ export const fetchProducts = () => {
 
     try {
       const response = await axios.get("http://localhost:4000/api/product/");
-      console.log("getAllproducts:", response.data);
       dispatch(getProductsSuccess(response.data));
     } catch (error) {
       dispatch(setError(error.response.data, error.response.status));

@@ -27,10 +27,7 @@ export default function CartList() {
 
   return (
     <div>
-      <div
-        className="container"
-        style={{ width: "600px", height: "400px", paddingTop: "0px" }}
-      >
+      <div style={{ width: "600px", height: "400px", paddingTop: "0px" }}>
         {cart.loading ? (
           <div>... loading</div>
         ) : cart.initialState ? (

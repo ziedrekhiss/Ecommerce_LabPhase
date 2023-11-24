@@ -73,7 +73,6 @@ export const signIn = (identifiers) => async (dispatch) => {
 export const checkAuthentication = () => (dispatch) => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("userRole");
-  console.log(role);
   if (token) {
     dispatch(loginSuccess(token, role));
   } else {

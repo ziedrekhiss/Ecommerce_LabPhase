@@ -1,6 +1,10 @@
 header {
   width: 100vw;
-  margin-left: 50px;
+  box-shadow: 3px 3px 3px #ccc;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  justify-content: center;
 }
 
 .logo {
@@ -9,6 +13,7 @@ header {
   justify-content: space-between;
   height: 80 px;
   padding-right: 200px;
+  padding-top: 0;
   background-color: var(--mainColor);
   color: var(--textColor);
 }
@@ -30,20 +35,19 @@ header {
   border: 0;
   outline: none;
   padding: 24px 10px;
-  font-size: 20px;
-  color: #cac7ff;
+  font-size: 16px;
 }
 
 ::placeholder {
   color: #202025;
   padding-left: 150px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .searchbar button {
   border: 0;
   border-radius: 50%;
-  padding-top: 2px;
+  padding-top: 3px;
   padding-right: 10px;
   cursor: pointer;
 }
@@ -58,7 +62,14 @@ button {
   cursor: pointer;
 }
 
+ul {
+  padding-top: 0;
+}
+
 li {
   padding: 0;
   margin: 0;
+}
+svg {
+  padding-top: 0;
 }
